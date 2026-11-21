@@ -1,0 +1,16 @@
+{
+  "name": "open-data-explorer",
+  "version": "1.0.0",
+  "description": "Open Data Explorer - Full Stack College Project",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build && cd ../backend && npm install && npm run build",
+    "start": "cd backend && node dist/server.js",
+    "dev": "cd backend && npx tsx src/server.ts"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "isomorphic-git": "^1.44.18"
+  }
+}

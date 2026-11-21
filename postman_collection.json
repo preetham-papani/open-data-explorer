@@ -1,0 +1,244 @@
+{
+  "info": {
+    "name": "Open Data Explorer API",
+    "description": "Comprehensive Postman test collection for the Open Data Explorer Full-Stack College Mini Project",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Server Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/health", "host": ["{{baseUrl}}"], "path": ["health"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"student_viva\",\n  \"email\": \"viva@opendata.com\",\n  \"password\": \"VivaPass@123\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/register", "host": ["{{baseUrl}}"], "path": ["auth", "register"] }
+          }
+        },
+        {
+          "name": "Login Admin",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@opendata.com\",\n  \"password\": \"Admin@123\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] }
+          }
+        },
+        {
+          "name": "Get Authenticated Profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/auth/profile", "host": ["{{baseUrl}}"], "path": ["auth", "profile"] }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/auth/logout", "host": ["{{baseUrl}}"], "path": ["auth", "logout"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Countries",
+      "item": [
+        {
+          "name": "Get Paginated Countries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/countries?page=1&limit=10&region=Asia&sortBy=population&sortOrder=desc", "host": ["{{baseUrl}}"], "path": ["countries"], "query": [
+              { "key": "page", "value": "1" },
+              { "key": "limit", "value": "10" },
+              { "key": "region", "value": "Asia" },
+              { "key": "sortBy", "value": "population" },
+              { "key": "sortOrder", "value": "desc" }
+            ]}
+          }
+        },
+        {
+          "name": "Search Country by Name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/countries/search?q=india", "host": ["{{baseUrl}}"], "path": ["countries", "search"], "query": [{ "key": "q", "value": "india" }] }
+          }
+        },
+        {
+          "name": "Get Country by Code (CCA2 / CCA3)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/countries/IN", "host": ["{{baseUrl}}"], "path": ["countries", "IN"] }
+          }
+        },
+        {
+          "name": "Get Countries by Region",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/countries/region/Europe", "host": ["{{baseUrl}}"], "path": ["countries", "region", "Europe"] }
+          }
+        },
+        {
+          "name": "Compare Two Countries Side-by-Side",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/countries/compare?first=IN&second=US", "host": ["{{baseUrl}}"], "path": ["countries", "compare"], "query": [
+              { "key": "first", "value": "IN" },
+              { "key": "second", "value": "US" }
+            ]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Weather",
+      "item": [
+        {
+          "name": "Search City Coordinates",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/weather/search?city=Hyderabad", "host": ["{{baseUrl}}"], "path": ["weather", "search"], "query": [{ "key": "city", "value": "Hyderabad" }] }
+          }
+        },
+        {
+          "name": "Get 7-Day Forecast & Hourly Trends",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/weather/forecast?city=Hyderabad", "host": ["{{baseUrl}}"], "path": ["weather", "forecast"], "query": [{ "key": "city", "value": "Hyderabad" }] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Currency",
+      "item": [
+        {
+          "name": "Get Supported Currencies List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/currency/currencies", "host": ["{{baseUrl}}"], "path": ["currency", "currencies"] }
+          }
+        },
+        {
+          "name": "Get Latest Exchange Rates",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/currency/rates?base=USD", "host": ["{{baseUrl}}"], "path": ["currency", "rates"], "query": [{ "key": "base", "value": "USD" }] }
+          }
+        },
+        {
+          "name": "Convert Currency",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/currency/convert?from=USD&to=INR&amount=100", "host": ["{{baseUrl}}"], "path": ["currency", "convert"], "query": [
+              { "key": "from", "value": "USD" },
+              { "key": "to", "value": "INR" },
+              { "key": "amount", "value": "100" }
+            ]}
+          }
+        },
+        {
+          "name": "Get User Conversion History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/currency/history", "host": ["{{baseUrl}}"], "path": ["currency", "history"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Saved Items",
+      "item": [
+        {
+          "name": "Bookmark an Item",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"itemType\": \"country\",\n  \"itemId\": \"IND\",\n  \"title\": \"India\",\n  \"subtitle\": \"Asia • New Delhi\",\n  \"data\": { \"population\": 1400000000 }\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/saved", "host": ["{{baseUrl}}"], "path": ["saved"] }
+          }
+        },
+        {
+          "name": "Get All Saved Items",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/saved", "host": ["{{baseUrl}}"], "path": ["saved"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Get System Telemetry Stats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/admin/stats", "host": ["{{baseUrl}}"], "path": ["admin", "stats"] }
+          }
+        },
+        {
+          "name": "Get Registered Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/admin/users?page=1&limit=10", "host": ["{{baseUrl}}"], "path": ["admin", "users"] }
+          }
+        },
+        {
+          "name": "Force Refresh Country Cache",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/admin/cache/refresh", "host": ["{{baseUrl}}"], "path": ["admin", "cache", "refresh"] }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api",
+      "type": "string"
+    }
+  ]
+}

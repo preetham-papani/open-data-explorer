@@ -1,0 +1,21 @@
+# Root gitignore
+node_modules/
+*.exe
+*.log
+.env
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.oxlintrc.json
+
+# Backend  
+backend/node_modules/
+backend/dist/
+backend/.env
+
+# Misc
+push-to-github.mjs
+package-lock.json
+frontend/package-lock.json
+backend/package-lock.json
