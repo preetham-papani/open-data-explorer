@@ -2,7 +2,7 @@ services:
   - type: web
     name: open-data-explorer
     runtime: node
-    buildCommand: "cd frontend && npm install && npm run build && cd ../backend && npm install && npm run build"
+    buildCommand: "cd frontend && npm install && npm run build && cd ../backend && npm install --include=dev && npm run build"
     startCommand: "cd backend && node dist/server.js"
     envVars:
       - key: NODE_ENV
@@ -10,6 +10,8 @@ services:
       - key: PORT
         value: 10000
       - key: SESSION_SECRET
-        generateValue: true
-      - key: MONGODB_URI
-        sync: false
+        value: opendata_render_secret_key_2026_secure
+      - key: MONGOMS_PREFER_GLOBAL_PATH
+        value: "1"
+      - key: MONGOMS_DISABLE_POSTINSTALL
+        value: "1"

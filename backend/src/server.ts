@@ -47,7 +47,12 @@ const startServer = async () => {
     app.use('/api', apiRouter);
 
     // 4. Serve Frontend Static Production Assets (Single Deployment Mode)
-    const frontendDist = path.resolve(__dirname, '../../frontend/dist');
+    // __dirname = backend/dist in production, so go up 3 levels to repo root then into frontend/dist
+    // Also try cwd-relative path as fallback (works on Render)
+    const cwdDist = path.resolve(process.cwd(), 'frontend/dist');
+    const relDist = path.resolve(__dirname, '../../frontend/dist');
+    const frontendDist = require('fs').existsSync(cwdDist) ? cwdDist : relDist;
+    console.log(`🔍 [Server] Looking for frontend at: ${frontendDist}`);
     if (fs.existsSync(frontendDist)) {
       app.use(express.static(frontendDist));
       app.get('*', (req, res, next) => {
